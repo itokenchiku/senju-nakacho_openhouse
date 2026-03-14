@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>千住仲町プロジェクト 完成見学会 | 株式会社イトウケンチク</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:    #111;
+      --mid:    #666;
+      --light:  #777;
+      --rule:   #ddd;
+      --bg:     #faf9f7;
+      --white:  #fff;
+      --cream:  #f3f1ed;
+      --dark:   #1a1a1a;
+      --serif:  'Zen Kaku Gothic New', sans-serif;
+      --sans:   'Zen Kaku Gothic New', sans-serif;
+      --en:     'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--bg);
+      font-size: 14px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ══════════════════════════════
+       HEADER
+    ══════════════════════════════ */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 64px;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(250,249,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .logo {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    nav { display: flex; gap: 36px; }
+
+    nav a {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--light);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--ink); }
+
+    /* ══════════════════════════════
+       HERO — タイポグラフィだけで成立
+    ══════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      padding-top: 56px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 背景の細かい罫線テクスチャ */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 59px,
+          rgba(255,255,255,0.03) 59px,
+          rgba(255,255,255,0.03) 60px
+        );
+      pointer-events: none;
+    }
+
+    .hero-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 80px 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--en);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 6.5vw, 80px);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      line-height: 1.25;
+      letter-spacing: 0.05em;
+      margin-bottom: 60px;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      align-self: flex-start;
+      width: fit-content;
+    }
+
+    .hero-meta-item {
+      padding: 24px 40px 24px 0;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      margin-right: 40px;
+    }
+
+    .hero-meta-item:last-child {
+      border-right: none;
+      margin-right: 0;
+    }
+
+    .hero-meta-label {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .hero-meta-val {
+      font-family: var(--en);
+      font-size: 17px;
+      color: var(--white);
+      letter-spacing: 0.06em;
+      line-height: 1.5;
+    }
+
+    .hero-footer {
+      padding: 24px 80px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-footer-note {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .hero-scroll {
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.2);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ══════════════════════════════
+       ABOUT
+    ══════════════════════════════ */
+    #about {
+      background: #ffffff;
+      padding: 100px 80px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-left {
+      position: sticky;
+      top: 80px;
+    }
+
+    .section-label {
+      font-family: var(--en);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--light);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(20px, 2.8vw, 32px);
+      font-weight: 300;
+      color: #0a0a0a;
+      line-height: 1.55;
+      letter-spacing: 0.04em;
+    }
+
+    .about-right {}
+
+    .about-text {
+      font-size: 15px;
+      line-height: 2.4;
+      color: #0a0a0a;
+      margin-bottom: 56px;
+      max-width: 100%;
+    }
+
+    /* 性能表 */
+    .perf-label {
+      font-family: var(--en);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: #555;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .perf-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 28px;
+    }
+
+    .perf-table th {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--light);
+      font-weight: 300;
+      text-align: left;
+      padding: 8px 16px 8px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .perf-table td {
+      padding: 12px 16px 12px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 13px;
+      color: #0a0a0a;
+      vertical-align: middle;
+    }
+
+    .perf-table td:first-child {
+      color: #333;
+      font-size: 12px;
+    }
+
+    .num {
+      font-family: var(--en);
+      font-size: 15px;
+      color: #0a0a0a;
+    }
+
+    .cert-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .cert-tag {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: #0a0a0a;
+      padding: 6px 14px;
+      border: 1px solid var(--rule);
+      background: var(--cream);
+    }
+
+    /* ══════════════════════════════
+       INFO
+    ══════════════════════════════ */
+    #info {
+      background: var(--dark);
+      padding: 100px 80px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    #info .section-label { color: rgba(255,255,255,0.2); }
+    #info .section-label::before { background: rgba(255,255,255,0.1); }
+    #info .section-title { color: var(--white); }
+
+    .info-rows { margin-top: 8px; }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      align-items: baseline;
+    }
+
+    .info-key {
+      font-family: var(--en);
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.25);
+      text-transform: uppercase;
+      padding-top: 4px;
+    }
+
+    .info-val {
+      font-size: 14px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.9;
+    }
+
+    .info-val strong {
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--white);
+      display: block;
+      margin-bottom: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    .info-val small {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      display: block;
+      margin-top: 4px;
+    }
+
+    .info-notes {
+      margin-top: 36px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 2.4;
+      letter-spacing: 0.04em;
+    }
+
+    /* MAP */
+    .info-map {
+      border-radius: 0;
+      overflow: hidden;
+      height: 360px;
+      margin-top: 0;
+    }
+
+    .info-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      filter: grayscale(1) contrast(0.9);
+    }
+
+    /* ══════════════════════════════
+       CONTACT
+    ══════════════════════════════ */
+    #contact {
+      background: var(--cream);
+      padding: 100px 80px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 560px;
+      gap: 60px;
+      max-width: 1100px;
+    }
+
+    .form-wrap .section-label { margin-bottom: 24px; }
+
+    .form {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--light);
+      text-transform: uppercase;
+    }
+
+    .field input,
+    .field textarea {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 14px;
+      color: var(--ink);
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 13px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus { border-color: var(--mid); }
+
+    .field textarea { min-height: 130px; }
+
+    .btn {
+      align-self: flex-start;
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--ink);
+      border: none;
+      padding: 15px 36px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.7; }
+
+    /* 連絡先情報 */
+    .contact-info { padding-top: 8px; }
+
+    .also-title {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-list { list-style: none; }
+
+    .contact-list li {
+      display: flex;
+      gap: 28px;
+      align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .contact-list li:first-child { border-top: 1px solid var(--rule); }
+
+    .c-key {
+      font-family: var(--en);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      color: #888;
+      text-transform: uppercase;
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .c-val {
+      font-family: var(--en);
+      font-size: 18px;
+      font-weight: 400;
+      color: #0a0a0a;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .c-val:hover { opacity: 0.5; }
+
+    .contact-note {
+      margin-top: 32px;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 2.4;
+      color: #0a0a0a;
+    }
+
+    /* ══════════════════════════════
+       FOOTER
+    ══════════════════════════════ */
+    footer {
+      background: var(--white);
+      padding: 28px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--rule);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--light);
+    }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 768px) {
+      header { padding: 0 20px; }
+      nav { gap: 20px; }
+
+      .hero-body { padding: 60px 24px 48px; }
+      .hero-meta { grid-template-columns: 1fr; width: auto; }
+      .hero-meta-item { padding: 16px 0; border-right: none; margin-right: 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .hero-footer { padding: 20px 24px; }
+
+      #about { grid-template-columns: 1fr; padding: 60px 24px; gap: 48px; }
+      .about-left { position: static; }
+
+      #info { grid-template-columns: 1fr; padding: 60px 24px; gap: 48px; }
+      .info-map { height: 240px; }
+
+      #contact { padding: 60px 24px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+
+      footer { padding: 20px 24px; flex-direction: column; gap: 6px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="#">株式会社イトウケンチク</a>
+    <nav>
+      <a href="#about">概要</a>
+      <a href="#info">開催情報</a>
+      <a href="#contact">問合せ</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-body">
+      <p class="hero-eyebrow">Completion Open House</p>
+      <h1 class="hero-title">
+        千住仲町<br>プロジェクト<br>完成見学会
+      </h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <p class="hero-meta-label">Date</p>
+          <p class="hero-meta-val">2026.3.28 sat<br>2026.3.29 sun</p>
+        </div>
+        <div class="hero-meta-item">
+          <p class="hero-meta-label">Time</p>
+          <p class="hero-meta-val">9:30 — 17:00</p>
+        </div>
+        <div class="hero-meta-item">
+          <p class="hero-meta-label">Admission</p>
+          <p class="hero-meta-val">無料<br>予約不要</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-footer">
+      <span class="hero-scroll">Scroll</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-left">
+      <p class="section-label">About</p>
+      <h2 class="section-title">足立区に竣工した<br>高性能木造賃貸住宅</h2>
+    </div>
+    <div class="about-right">
+      <p class="about-text">
+        A棟・B棟の2棟構成、計4戸。<br>
+        木造軸組工法の温かみと高い省エネ・断熱性能を両立した賃貸共同住宅です。<br>
+        許容応力度計算による最高水準の構造安全性のもと、入居者が安心して長く住み続けられる住まいを目指しました。
+      </p>
+
+      <p class="perf-label">Performance — 住戸別性能値</p>
+      <table class="perf-table">
+        <thead>
+          <tr>
+            <th>住戸</th>
+            <th>UA値</th>
+            <th>BEI</th>
+            <th>断熱等級</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A棟 101（1F）</td>
+            <td><span class="num">0.34</span> W/m²K</td>
+            <td><span class="num">0.59</span></td>
+            <td>等級6</td>
+          </tr>
+          <tr>
+            <td>A棟 201（2F）</td>
+            <td><span class="num">0.31</span> W/m²K</td>
+            <td><span class="num">0.57</span></td>
+            <td>等級6</td>
+          </tr>
+          <tr>
+            <td>B棟 102（1F）</td>
+            <td><span class="num">0.31</span> W/m²K</td>
+            <td><span class="num">0.60</span></td>
+            <td>等級6</td>
+          </tr>
+          <tr>
+            <td>B棟 202（2F）</td>
+            <td><span class="num">0.29</span> W/m²K</td>
+            <td><span class="num">0.58</span></td>
+            <td>等級6</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="cert-strip">
+        <span class="cert-tag">BELS ★★★★★</span>
+        <span class="cert-tag">耐震等級3</span>
+        <span class="cert-tag">耐風等級2</span>
+        <span class="cert-tag">許容応力度計算</span>
+        <span class="cert-tag">東京ゼロエミ住宅 水準A</span>
+        <span class="cert-tag">HEAT20 G2相当</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section id="info">
+    <div>
+      <p class="section-label">Open House</p>
+      <h2 class="section-title">開催概要</h2>
+      <div class="info-map" style="margin-top:40px;">
+        <iframe
+          src="https://www.google.com/maps?ll=35.74469757968923,139.79886844973265&z=17&output=embed"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+    <div>
+      <div class="info-rows">
+        <div class="info-row">
+          <span class="info-key">Date</span>
+          <div class="info-val">
+            <strong>3月28日（土）・29日（日）</strong>
+            2026年
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Time</span>
+          <div class="info-val">
+            <strong>9:30 〜 17:00</strong>
+            最終入場 16:30
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Venue</span>
+          <div class="info-val">
+            <strong>千住仲町プロジェクト</strong>
+            東京都足立区千住仲町
+            <small>詳細住所はお問い合わせ後にご案内いたします</small>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Access</span>
+          <div class="info-val" style="font-size:13px; line-height:2.3;">
+            北千住駅（JR / 東京メトロ / 東武 / TX）より徒歩約9分<br>
+            千住大橋駅（東京メトロ日比谷線）より徒歩約8分<br>
+            牛田駅（東武スカイツリーライン）より徒歩約15分<br>
+            京成関屋駅（京成本線）より徒歩約15分
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="info-key">Admission</span>
+          <div class="info-val">無料 / 予約不要</div>
+        </div>
+      </div>
+      <p class="info-notes">
+        ※ 設計担当者がご案内いたします<br>
+        ※ 土地活用・高性能賃貸住宅のご相談もどうぞ<br>
+        ※ 駐車場はございません
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid">
+
+      <div class="contact-info">
+        <p class="also-title">Instagram DM<br>からでもお気軽に</p>
+        <ul class="contact-list">
+          <li>
+            <span class="c-key">Instagram</span>
+            <a class="c-val" href="https://www.instagram.com/itokenchiku/" target="_blank" rel="noopener">@itokenchiku</a>
+          </li>
+          <li>
+            <span class="c-key">TEL</span>
+            <a class="c-val" href="tel:0368830381">03-6883-0381</a>
+          </li>
+          <li>
+            <span class="c-key">Mail</span>
+            <a class="c-val" href="mailto:info@itokenchiku.jp">info@itokenchiku.jp</a>
+          </li>
+          <li>
+            <span class="c-key">Hours</span>
+            <span class="c-val">平日 9:00 〜 17:30</span>
+          </li>
+        </ul>
+        <p class="contact-note">
+          株式会社イトウケンチク<br>
+          東京都足立区柳原1-20-19<br><br>
+          見学会のご質問のほか、<br>
+          土地活用・高性能賃貸住宅の<br>
+          設計相談もお気軽にどうぞ。
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 株式会社イトウケンチク</span>
+    <span>千住仲町プロジェクト 完成見学会 2026.3.28–3.29</span>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    document.
