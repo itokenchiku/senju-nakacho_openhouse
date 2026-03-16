@@ -542,6 +542,137 @@
       color: #0a0a0a;
     }
 
+
+    /* ══════════════════════════════
+       MERIT
+    ══════════════════════════════ */
+    #merit {
+      background: var(--dark);
+      padding: 100px 80px;
+    }
+
+    .merit-header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+      margin-bottom: 80px;
+    }
+
+    .merit-header-left {
+      position: sticky;
+      top: 80px;
+    }
+
+    .merit-header-left .section-label { color: rgba(255,255,255,0.25); }
+    .merit-header-left .section-label::before { background: rgba(255,255,255,0.1); }
+    .merit-header-left .section-title { color: var(--white); }
+
+    .merit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .merit-col-label {
+      font-family: var(--en);
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.2);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .merit-col:first-child {
+      padding-right: 48px;
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .merit-col:last-child {
+      padding-left: 48px;
+    }
+
+    .merit-item {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .merit-item:last-child { border-bottom: none; }
+
+    .merit-item-title {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .merit-item-body {
+      font-size: 13px;
+      line-height: 2;
+      color: rgba(255,255,255,0.45);
+    }
+
+    .merit-item-body .note {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* 制度解説 */
+    .merit-definitions {
+      margin-top: 80px;
+      padding-top: 60px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 80px;
+    }
+
+    .merit-def-item {}
+
+    .merit-def-label {
+      font-family: var(--en);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.2);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .merit-def-title {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .merit-def-body {
+      font-size: 12px;
+      line-height: 2;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .merit-def-body .note {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+    }
+
+    @media (max-width: 768px) {
+      #merit { padding: 60px 24px; }
+      .merit-header { grid-template-columns: 1fr; gap: 40px; }
+      .merit-header-left { position: static; }
+      .merit-grid { grid-template-columns: 1fr; }
+      .merit-col:first-child { padding-right: 0; border-right: none; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+      .merit-col:last-child { padding-left: 0; }
+      .merit-definitions { grid-template-columns: 1fr; gap: 40px; }
+    }
+
     /* ══════════════════════════════
        FOOTER
     ══════════════════════════════ */
@@ -589,6 +720,7 @@
     <a class="logo" href="#">株式会社イトウケンチク</a>
     <nav>
       <a href="#about">概要</a>
+      <a href="#merit">性能・制度</a>
       <a href="#info">開催情報</a>
       <a href="#contact">問合せ</a>
     </nav>
@@ -679,6 +811,78 @@
         <span class="cert-tag">許容応力度計算</span>
         <span class="cert-tag">東京ゼロエミ住宅 水準A</span>
         <span class="cert-tag">HEAT20 G2相当</span>
+      </div>
+
+
+    </div>
+  </section>
+
+
+  <!-- MERIT -->
+  <section id="merit">
+    <div class="merit-header">
+      <div class="merit-header-left">
+        <p class="section-label">Performance &amp; System</p>
+        <h2 class="section-title">高性能住宅を<br>建てるメリット</h2>
+      </div>
+      <div class="merit-grid">
+        <div class="merit-col">
+          <p class="merit-col-label">土地をお持ちの方・収益物件をご検討の方へ</p>
+          <div class="merit-item">
+            <p class="merit-item-title">省エネ性能と入居率</p>
+            <p class="merit-item-body">断熱等級6・UA値0.29〜0.34の住宅は光熱費の削減効果が高く、入居者にとって暮らしやすい環境を提供します。入居率の安定につながります。</p>
+          </div>
+          <div class="merit-item">
+            <p class="merit-item-title">東京ゼロエミ住宅 水準Aの取得</p>
+            <p class="merit-item-body">東京都独自の高性能住宅認定制度。水準Aを取得することで、東京都からの助成金（集合住宅・水準A：200万円/戸）を受けることができます。<span class="note">※東京都内の新築住宅が対象。他府県では本制度は適用されません。</span></p>
+          </div>
+          <div class="merit-item">
+            <p class="merit-item-title">BELSによる性能の見える化</p>
+            <p class="merit-item-body">BELS（建築物省エネルギー性能表示制度）は、第三者機関が省エネ性能を評価・表示する制度です。★5取得により、物件の性能を客観的に示すことができます。</p>
+          </div>
+          <div class="merit-item">
+            <p class="merit-item-title">木造×高性能認定住宅と融資</p>
+            <p class="merit-item-body">性能認定を取得した木造住宅の評価に積極的な金融機関も増えています。建物性能をきちんと評価してくれる金融機関とのマッチングも視野に入れながら、資金計画のご相談に対応しています。</p>
+          </div>
+        </div>
+        <div class="merit-col">
+          <p class="merit-col-label">住まいづくりをお考えの方へ</p>
+          <div class="merit-item">
+            <p class="merit-item-title">許容応力度計算による構造安全性</p>
+            <p class="merit-item-body">本物件は許容応力度計算により耐震等級3・耐風等級2を取得しています。壁量計算ではなく、より精密な構造計算による安全性の確認です。</p>
+          </div>
+          <div class="merit-item">
+            <p class="merit-item-title">高気密・高断熱がもたらす快適性</p>
+            <p class="merit-item-body">UA値0.29〜0.34・断熱等級6（HEAT20 G2相当）の住宅は、冬暖かく夏涼しい室内環境を実現します。結露やカビの抑制で建物の長寿命化にも寄与します。</p>
+          </div>
+          <div class="merit-item">
+            <p class="merit-item-title">土地探し・建て替え・新築、幅広く対応</p>
+            <p class="merit-item-body">土地をお持ちでない方の土地探しから、既存建物の建て替え、新築計画まで幅広くご相談いただけます。設計施工一体（デザインビルド）で対応しています。<span class="note">※本物件は設計のみ担当</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="merit-definitions">
+      <div class="merit-def-item">
+        <p class="merit-def-label">What is</p>
+        <p class="merit-def-title">BELS（建築物省エネルギー性能表示制度）</p>
+        <p class="merit-def-body">国土交通省の省エネ法に基づき、第三者評価機関が建築物の省エネ性能を評価・表示する制度（Building-Housing Energy-efficiency Labeling System）。一次エネルギー消費量をもとに星1〜5で表示。本物件は全戸★★★★★を取得。</p>
+      </div>
+      <div class="merit-def-item">
+        <p class="merit-def-label">What is</p>
+        <p class="merit-def-title">東京ゼロエミ住宅 水準Aとは</p>
+        <p class="merit-def-body">東京都が独自に設定した高性能住宅の認定制度。断熱性能（UA値0.35以下）・省エネ性能（BEI0.55以下）等の基準を満たすことで認定を受け、都の助成金（集合住宅・水準A：200万円/戸）の対象となります。<span class="note">※本制度は東京都内の新築住宅のみが対象です。他府県での建築には適用されません。</span></p>
+      </div>
+      <div class="merit-def-item">
+        <p class="merit-def-label">What is</p>
+        <p class="merit-def-title">UA値・BEIとは</p>
+        <p class="merit-def-body">UA値（外皮平均熱貫流率）は建物の熱の逃げにくさを示す指標で、数値が低いほど断熱性能が高い。BEI（Building Energy Index）は一次エネルギー消費量の指標で、国の基準値を1.0として低いほど省エネ性能が高い。東京ゼロエミ水準A基準はUA値0.35以下、BEI0.55以下（集合住宅）。</p>
+      </div>
+      <div class="merit-def-item">
+        <p class="merit-def-label">Note</p>
+        <p class="merit-def-title">不動産取得税の優遇措置</p>
+        <p class="merit-def-body">一定の要件を満たす東京ゼロエミ住宅（太陽光発電設備付き）については、不動産取得税の減免措置が適用される場合があります。詳細は所在地の都税事務所へお問い合わせください。</p>
       </div>
     </div>
   </section>
@@ -782,7 +986,4 @@
   <footer>
     <span>© 2026 株式会社イトウケンチク</span>
     <span>千住仲町プロジェクト 完成見学会 2026.3.28–3.29</span>
-  </footer>
-
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    document.
+  </footer
