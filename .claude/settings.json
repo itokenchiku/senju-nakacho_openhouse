@@ -1,0 +1,82 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'node \"$(git rev-parse --show-toplevel)/.claude/hooks/harness-hook.js\"'",
+            "timeout": 30,
+            "if": "Bash(git commit:*)",
+            "statusMessage": "ハーネスエンジニアリング検証中..."
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'node \"$(git rev-parse --show-toplevel)/.claude/hooks/post-write-harness.js\"'",
+            "timeout": 10,
+            "statusMessage": "ハーネスエンジニアリング チェック..."
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'ROOT=$(git rev-parse --show-toplevel 2>/dev/null); [ -z \"$ROOT\" ] && exit 0; F=\"$ROOT/docs/latest-result.md\"; if [ -f \"$F\" ]; then echo \"=== 前回セッションの引き継ぎ (docs/latest-result.md) ===\"; head -n 400 \"$F\"; echo \"=== (ここまで) ===\"; fi; WARN=\"\"; [ ! -f \"$ROOT/.claude/settings.json\" ] && WARN=\"${WARN}  ⚠ .claude/settings.json が不在\\n\"; [ ! -d \"$ROOT/.claude/hooks\" ] && WARN=\"${WARN}  ⚠ .claude/hooks/ が不在\\n\"; [ ! -f \"$ROOT/CLAUDE.md\" ] && WARN=\"${WARN}  ⚠ CLAUDE.md が不在\\n\"; REMOTE=$(git -C \"$ROOT\" remote get-url origin 2>/dev/null || echo \"\"); [ -z \"$REMOTE\" ] && WARN=\"${WARN}  ⚠ git remote (origin) 未設定 — 別PCに同期できません\\n\"; if [ -n \"$WARN\" ]; then echo \"\"; echo \"=== ⚠ 環境未整備の警告 ===\"; echo -e \"$WARN\"; echo \"修正: python itokenchiku-tools/init-repo.py で再配布、または手動で .claude/ を設置\"; echo \"=== (ここまで) ===\"; fi'",
+            "timeout": 5,
+            "statusMessage": "前回セッション引き継ぎ読込..."
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'node \"$(git rev-parse --show-toplevel)/.claude/hooks/pre-restart-check.js\"'",
+            "timeout": 10,
+            "statusMessage": "未コミット変更チェック..."
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "Agent",
+      "ToolSearch",
+      "Skill",
+      "TaskCreate",
+      "TaskUpdate",
+      "TaskGet",
+      "TaskList",
+      "TaskOutput",
+      "TaskStop",
+      "NotebookEdit",
+      "mcp__figma__*",
+      "mcp__claude_ai__*"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)"
+    ]
+  }
+}
