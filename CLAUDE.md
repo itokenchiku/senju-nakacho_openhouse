@@ -80,3 +80,13 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+## 資料・書類のデザイン
+
+資料・書類（PDF・HTML）を作成・修正するときは、必ず `itokenchiku-design/DESIGN.md` のデザインシステムを適用すること。
+
+- 参照先: `C:\Users\itoke\Documents\itokenchiku-design\DESIGN.md`
+- サンプル: `C:\Users\itoke\Documents\itokenchiku-design\samples\estimate-tomizawa.html`
+- CSS変数（`:root {}`）・スペーシングスケール・タイポグラフィを統一する
+- 内容に合わせて臨機応変にレイアウトを調整してよい（厳密な雛形踏襲は不要）
+
