@@ -86,7 +86,7 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 資料・書類（PDF・HTML）を作成・修正するときは、必ず `itokenchiku-design/DESIGN.md` のデザインシステムを適用すること。
 
 - 参照先: `C:\Users\itoke\Documents\itokenchiku-design\DESIGN.md`
-- サンプル: `C:\Users\itoke\Documents\itokenchiku-design\samples\estimate-tomizawa.html`
+- ベースサンプル: `C:SERSITOKEDOCUMENTSITOKENCHIKU-ESTIMATESAMPLESYOUNGPROPOSAL-AIRCON-YOUNG.HTML`（最も完成度が高い）
 - CSS変数（`:root {}`）・スペーシングスケール・タイポグラフィを統一する
 - 内容に合わせて臨機応変にレイアウトを調整してよい（厳密な雛形踏襲は不要）
 
