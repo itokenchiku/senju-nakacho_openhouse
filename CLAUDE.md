@@ -90,3 +90,12 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - CSS変数（`:root {}`）・スペーシングスケール・タイポグラフィを統一する
 - 内容に合わせて臨機応変にレイアウトを調整してよい（厳密な雛形踏襲は不要）
 
+
+
+## 離席時の自動処理
+
+「離席」「現場」「お昼」「ご飯」「戻ります」「行ってきます」等の離席を示す発言を検知したら、
+承認不要で即座に以下を実行すること：
+1. docs/latest-result.md（またはリポ内の相当ファイル）を現セッション内容で更新
+2. git add → git commit → git push origin dev（またはmainブランチ）
+
