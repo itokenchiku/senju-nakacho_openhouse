@@ -32,6 +32,18 @@
         "hooks": [
           {
             "type": "command",
+            "command": "bash -c 'cd \"$(git rev-parse --show-toplevel 2>/dev/null)\" && BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null) && git pull origin \"$BRANCH\" --quiet 2>&1 || echo \"⚠ pull失敗（オフライン or コンフリクト）\"'",
+            "timeout": 15,
+            "statusMessage": "git pull 自動同期..."
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'ROOT=$(git rev-parse --show-toplevel 2>/dev/null); F=\"$ROOT/docs/latest-result.md\"; if [ -f \"$F\" ]; then echo \"=== 前回セッションの引き継ぎ (docs/latest-result.md) ===\"; head -n 400 \"$F\"; echo \"=== (ここまで) ===\"; fi'",
+            "timeout": 5,
+            "statusMessage": "前回セッション引き継ぎ読込..."
+          },
+          {
+            "type": "command",
             "command": "bash -c 'ROOT=$(git rev-parse --show-toplevel 2>/dev/null); [ -z \"$ROOT\" ] && exit 0; F=\"$ROOT/docs/latest-result.md\"; if [ -f \"$F\" ]; then echo \"=== 前回セッションの引き継ぎ (docs/latest-result.md) ===\"; head -n 400 \"$F\"; echo \"=== (ここまで) ===\"; fi; WARN=\"\"; [ ! -f \"$ROOT/.claude/settings.json\" ] && WARN=\"${WARN}  ⚠ .claude/settings.json が不在\\n\"; [ ! -d \"$ROOT/.claude/hooks\" ] && WARN=\"${WARN}  ⚠ .claude/hooks/ が不在\\n\"; [ ! -f \"$ROOT/CLAUDE.md\" ] && WARN=\"${WARN}  ⚠ CLAUDE.md が不在\\n\"; REMOTE=$(git -C \"$ROOT\" remote get-url origin 2>/dev/null || echo \"\"); [ -z \"$REMOTE\" ] && WARN=\"${WARN}  ⚠ git remote (origin) 未設定 — 別PCに同期できません\\n\"; if [ -n \"$WARN\" ]; then echo \"\"; echo \"=== ⚠ 環境未整備の警告 ===\"; echo -e \"$WARN\"; echo \"修正: python itokenchiku-tools/init-repo.py で再配布、または手動で .claude/ を設置\"; echo \"=== (ここまで) ===\"; fi'",
             "timeout": 5,
             "statusMessage": "前回セッション引き継ぎ読込..."
