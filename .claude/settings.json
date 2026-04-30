@@ -65,6 +65,12 @@
             "command": "bash -c 'echo \"⚠ 回答前チェック: (1)根拠は何か (2)決定論的に確認したか (3)あいまい語が混じっていないか (4)提案ならHE表+効果サイズ+やらない選択肢があるか\"'",
             "timeout": 3,
             "statusMessage": "回答精度チェック..."
+          },
+          {
+            "type": "command",
+            "command": "bash -c \"date +'⏰ 現在日時: %Y-%m-%d %H:%M:%S'\"",
+            "timeout": 3,
+            "statusMessage": "現在日時を注入..."
           }
         ]
       }
