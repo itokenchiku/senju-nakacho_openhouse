@@ -32,7 +32,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'cd \"$(git rev-parse --show-toplevel 2>/dev/null)\" && BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null) && git pull --rebase --autostash origin \"$BRANCH\" --quiet 2>&1 || echo \"⚠ pull失敗（オフライン or コンフリクト）\"'",
+            "command": "bash -c 'cd \"$(git rev-parse --show-toplevel 2>/dev/null)\" && BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null) && git pull --rebase --autostash origin \"$BRANCH\" --quiet >/dev/null 2>&1 || true'",
             "timeout": 15,
             "statusMessage": "git pull 自動同期..."
           },
