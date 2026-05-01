@@ -50,7 +50,7 @@
           },
           {
             "type": "command",
-            "command": "bash -c 'F=\"$HOME/Documents/itokenchiku-knowledge/pc-talk.md\"; [ -f \"$F\" ] || exit 0; SELF=$(hostname); MATCH=$(grep -E \"^- \\[ \\].*\\[.* → ($SELF|@all)\\]\" \"$F\" 2>/dev/null); if [ -n \"$MATCH\" ]; then echo \"\"; echo \"=== 📨 pc-talk: 自PC宛($SELF)/全PC宛 未対応エントリ ===\"; echo \"$MATCH\"; echo \"=== 指示: 各エントリに対応し、対応後は - [ ] を - [x] に変更 + (resolved YYYY-MM-DD by $SELF) を末尾追記して commit & push せよ ===\"; fi; exit 0'",
+            "command": "bash -c 'F=\"$HOME/Documents/itokenchiku-knowledge/pc-talk.md\"; [ -f \"$F\" ] || exit 0; SELF=$(hostname); MATCH=$(grep -iE \"^- \\[ \\].*\\[.* → ($SELF|@all)\\]\" \"$F\" 2>/dev/null); if [ -n \"$MATCH\" ]; then echo \"\"; echo \"=== 📨 pc-talk: 自PC宛($SELF)/全PC宛 未対応エントリ ===\"; echo \"$MATCH\"; echo \"=== 指示: 各エントリに対応し、対応後は - [ ] を - [x] に変更 + (resolved YYYY-MM-DD by $SELF) を末尾追記して commit & push せよ ===\"; fi; exit 0'",
             "timeout": 5,
             "statusMessage": "pc-talk: 自PC宛メッセージ確認..."
           }
