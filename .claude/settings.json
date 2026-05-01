@@ -77,6 +77,12 @@
             "command": "bash -c \"date +'⏰ 現在日時: %Y-%m-%d %H:%M:%S'\"",
             "timeout": 3,
             "statusMessage": "現在日時を注入..."
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'F=\"$HOME/Documents/itokenchiku-knowledge/pc-talk.md\"; [ -f \"$F\" ] || exit 0; (cd \"$(dirname \"$F\")\" && git fetch origin --quiet 2>/dev/null && git pull --rebase --autostash origin \"$(git rev-parse --abbrev-ref HEAD)\" --quiet >/dev/null 2>&1) || true; SELF=$(hostname); MATCH=$(grep -iE \"^- \\[ \\].*\\[.* → ($SELF|@all)\\]\" \"$F\" 2>/dev/null); if [ -n \"$MATCH\" ]; then echo \"\"; echo \"=== 📨 pc-talk 新着: 自PC宛($SELF)/全PC宛 未対応 ===\"; echo \"$MATCH\"; echo \"=== 指示: 上記タスクに自律対応し、対応後は - [ ] を - [x] + (resolved YYYY-MM-DD by $SELF) に書き換えて commit & push せよ。判断点はユーザーに直接聞く ===\"; fi; exit 0'",
+            "timeout": 8,
+            "statusMessage": "pc-talk: 新着メッセージ確認..."
           }
         ]
       }
