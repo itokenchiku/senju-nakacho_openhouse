@@ -47,6 +47,12 @@
             "command": "bash -c 'ROOT=$(git rev-parse --show-toplevel 2>/dev/null); [ -z \"$ROOT\" ] && exit 0; F=\"$ROOT/docs/latest-result.md\"; if [ -f \"$F\" ]; then echo \"=== 前回セッションの引き継ぎ (docs/latest-result.md) ===\"; head -n 400 \"$F\"; echo \"=== (ここまで) ===\"; fi; WARN=\"\"; [ ! -f \"$ROOT/.claude/settings.json\" ] && WARN=\"${WARN}  ⚠ .claude/settings.json が不在\\n\"; [ ! -d \"$ROOT/.claude/hooks\" ] && WARN=\"${WARN}  ⚠ .claude/hooks/ が不在\\n\"; [ ! -f \"$ROOT/CLAUDE.md\" ] && WARN=\"${WARN}  ⚠ CLAUDE.md が不在\\n\"; REMOTE=$(git -C \"$ROOT\" remote get-url origin 2>/dev/null || echo \"\"); [ -z \"$REMOTE\" ] && WARN=\"${WARN}  ⚠ git remote (origin) 未設定 — 別PCに同期できません\\n\"; if [ -n \"$WARN\" ]; then echo \"\"; echo \"=== ⚠ 環境未整備の警告 ===\"; echo -e \"$WARN\"; echo \"修正: python itokenchiku-tools/init-repo.py で再配布、または手動で .claude/ を設置\"; echo \"=== (ここまで) ===\"; fi'",
             "timeout": 5,
             "statusMessage": "前回セッション引き継ぎ読込..."
+          },
+          {
+            "type": "command",
+            "command": "bash -c 'F=\"$HOME/Documents/itokenchiku-knowledge/pc-talk.md\"; [ -f \"$F\" ] || exit 0; SELF=$(hostname); MATCH=$(grep -E \"^- \\[ \\].*\\[.* → ($SELF|@all)\\]\" \"$F\" 2>/dev/null); if [ -n \"$MATCH\" ]; then echo \"\"; echo \"=== 📨 pc-talk: 自PC宛($SELF)/全PC宛 未対応エントリ ===\"; echo \"$MATCH\"; echo \"=== 指示: 各エントリに対応し、対応後は - [ ] を - [x] に変更 + (resolved YYYY-MM-DD by $SELF) を末尾追記して commit & push せよ ===\"; fi; exit 0'",
+            "timeout": 5,
+            "statusMessage": "pc-talk: 自PC宛メッセージ確認..."
           }
         ]
       }
